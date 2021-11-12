@@ -1,4 +1,5 @@
 === User Role Editor by PINGLEWARE ===
+Contributors: phkcorp2005
 Tags: pingleware, user-role-editor
 Requires at least: 5.8
 Tested up to: 5.8.2
@@ -23,5 +24,11 @@ Support multisite
 == Frequently Asked Questions ==
 To change the default role, just select the radio button of the new role, and the change is instant
 
+== Screenshots ==
+
+
 == Changelog ==
 1.0.0  Initial release
+
+== Upgrade Notice ==
+Replace https://wordpress.org/plugins/user-role-editor with this plugin without premium fees
