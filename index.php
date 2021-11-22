@@ -2,7 +2,7 @@
 /**
  * Plugin Name: User Role Editor by PINGLEWARE
  * Description: A restored version from the https://wordpress.org/plugins/user-role-editor, which no longer permits adding new user roles
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: PressPage Entertainment Inc DBA PINGLEWARE
  * Author URL: https://pingleware.work
  */
@@ -32,19 +32,21 @@ if (!function_exists('pingleware_user_role_editor_admin_menu_init')) {
           }
           add_role(strtolower($role), $display, $_capabilities);
         } else if (sanitize_text_field($_POST['addrole']) === 'Update Role') {
-          $capabilities = explode(",",sanitize_textarea_field($_POST['newrole-capabilities']));
-          $role = sanitize_text_field($_POST['newrole']);
-          $selected = $roles_obj->roles[$role];
-          $selected['name'] = sanitize_text_field($_POST['newrole-name']);
-          $_capabilities = array();
-          if (count($capabilities) > 0) {
-             foreach($capabilities as $capability) {
-		$_capabilities[$capability] = true;
+          if (!in_array($role, array('administrator','editor','author','contributor','subscriber'))) {
+             $capabilities = explode(",",sanitize_textarea_field($_POST['newrole-capabilities']));
+             $role = sanitize_text_field($_POST['newrole']);
+             $selected = $roles_obj->roles[$role];
+             $selected['name'] = sanitize_text_field($_POST['newrole-name']);
+             $_capabilities = array();
+             if (count($capabilities) > 0) {
+                foreach($capabilities as $capability) {
+		   $_capabilities[$capability] = true;
+                }
+                $selected['capabilities'] = $_capabilities;
              }
-             $selected['capabilities'] = $_capabilities;
+             remove_role($role);
+             add_role($role,$selected['name'],$selected['capabilities']);
           }
-          remove_role($role);
-          add_role($role,$selected['name'],$selected['capabilities']);
         }
       } elseif (isset($_POST['rolelistform'])) {
         update_option('default_role', sanitize_text_field($_POST['default']));
