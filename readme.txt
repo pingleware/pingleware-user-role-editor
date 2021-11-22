@@ -4,7 +4,7 @@ Tags: pingleware, user-role-editor
 Requires at least: 5.8
 Tested up to: 5.8.2
 Requires PHP: 7.1
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: CC-BY-4.0
 License URI: https://choosealicense.com/licenses/cc-by-4.0/
 
@@ -25,9 +25,12 @@ Support multisite
 To change the default role, just select the radio button of the new role, and the change is instant
 
 == Screenshots ==
-
+1. Add a new role
+2. Update and delete an existing role
 
 == Changelog ==
+1.1.0  Added name and capabilities with update and delete
+1.0.1  Fixes recommended by wordpress.org
 1.0.0  Initial release
 
 == Upgrade Notice ==
